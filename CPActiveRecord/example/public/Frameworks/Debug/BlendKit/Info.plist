@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CPBundleExecutable</key>
+	<string>BlendKit.sj</string>
+	<key>CPBundleIdentifier</key>
+	<string>com.280n.BlendKit</string>
+	<key>CPBundleInfoDictionaryVersion</key>
+	<real>6.0</real>
+	<key>CPBundleName</key>
+	<string>BlendKit</string>
+	<key>CPBundlePackageType</key>
+	<string>FMWK</string>
+	<key>CPBundlePlatforms</key>
+	<array>
+		<string>objj</string>
+	</array>
+	<key>CPBundleReplacedFiles</key>
+	<array>
+		<string>BKShowcaseController.j</string>
+		<string>BKThemeDescriptor.j</string>
+		<string>BKThemedObjectTemplate.j</string>
+		<string>BKThemeTemplate.j</string>
+		<string>BlendKit.j</string>
+	</array>
+	<key>CPBundleVersion</key>
+	<string>0.7.1</string>
+</dict>
+</plist>

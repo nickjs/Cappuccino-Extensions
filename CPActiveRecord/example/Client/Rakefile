@@ -1,0 +1,25 @@
+
+require 'objective-j'
+require 'objective-j/bundletask'
+
+if !ENV['CONFIG']
+    ENV['CONFIG'] = 'Debug'
+end
+
+ObjectiveJ::BundleTask.new(:Client) do |t|
+    t.name          = 'Client'
+    t.identifier    = 'com.perfect.Client'
+    t.version       = '1.0'
+    t.author        = 'Perfect Studios'
+    t.email         = 'feedback@perfect-studios.com'
+    t.summary       = 'Client'
+    t.sources       = FileList['*.j']
+    t.resources     = FileList['Resources/*']
+    t.index_file    = 'index.html'
+    t.info_plist    = 'Info.plist'
+    t.build_path    = File.join('..', 'public')
+    t.flag          = '-DDEBUG' if ENV['CONFIG'] == 'Debug'
+    t.flag          = '-O' if ENV['CONFIG'] == 'Release'
+end
+
+task :default => [:Client]

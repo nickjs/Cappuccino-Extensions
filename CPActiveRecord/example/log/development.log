@@ -1,0 +1,417 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreatePeople (20091005202311)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091005202311')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("people")[0m
+  [4;36;1mPerson Create (0.4ms)[0m   [0;1mINSERT INTO "people" ("name", "created_at", "updated_at", "email") VALUES('Francisco Tolmasky', '2009-10-05 20:50:47', '2009-10-05 20:50:47', NULL)[0m
+  [4;35;1mPerson Create (0.4ms)[0m   [0mINSERT INTO "people" ("name", "created_at", "updated_at", "email") VALUES('Tom Robinson', '2009-10-05 20:50:47', '2009-10-05 20:50:47', NULL)[0m
+  [4;36;1mPerson Create (0.4ms)[0m   [0;1mINSERT INTO "people" ("name", "created_at", "updated_at", "email") VALUES('Ross Boucher', '2009-10-05 20:50:47', '2009-10-05 20:50:47', NULL)[0m
+  [4;35;1mPerson Create (0.3ms)[0m   [0mINSERT INTO "people" ("name", "created_at", "updated_at", "email") VALUES('Nick Small', '2009-10-05 20:50:47', '2009-10-05 20:50:47', NULL)[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:51:32) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:51:32) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:51:32) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:52:36) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:52:36) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:52:36) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:55:57) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:55:57) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 16:55:57) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:31:40) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:31:40) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:31:40) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:32:00) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:32:00) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:32:00) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:32:26) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:32:26) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:32:26) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:56:56) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:56:56) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:56:56) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:58:00) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:58:00) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:58:00) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:58:13) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:58:13) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:58:13) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Debug/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:59:41) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:59:41) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 17:59:41) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:01:06) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:01:06) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:02:47) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:02:47) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:02:47) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:04:03) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:04:03) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:04:31) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:04:31) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:04:31) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:04:32) [GET]
+
+LoadError (Expected /Users/Nick/Applications/Cappuccino-Extensions/CPActiveRecord/example/app/controllers/people_controller.rb to define PeopleController):
+  
+
+Rendered rescues/_trace (82.9ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:05:01) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:05:01) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:05:01) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-10-05 18:05:02) [GET]
+  [4;36;1mPerson Load (0.6ms)[0m   [0;1mSELECT * FROM "people" [0m
+Completed in 847ms (View: 797, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:05:19) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:05:19) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:05:19) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-10-05 18:05:20) [GET]
+  [4;35;1mPerson Load (0.8ms)[0m   [0mSELECT * FROM "people" [0m
+Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/people]
