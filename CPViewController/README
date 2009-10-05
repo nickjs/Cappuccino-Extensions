@@ -1,0 +1,4 @@
+A port of UIViewController to Cappuccino. This is different than the CPViewController included in AppKit, which is more similar to NSViewController. If you plan to use both, you will need to rename this class.
+
+Usage:
+Documentation can be found in the code, or in Apple's documentation for UIViewController.
