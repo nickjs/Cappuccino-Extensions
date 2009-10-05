@@ -1,0 +1,3 @@
+[submodule "CouchDB"]
+	path = CouchDB
+	url = git://github.com/topfunky/cappuccino-couchdb.git

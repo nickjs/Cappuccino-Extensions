@@ -415,3 +415,32 @@ Rendering rescues/layout (not_found)
 Processing PeopleController#index (for 127.0.0.1 at 2009-10-05 18:05:20) [GET]
   [4;35;1mPerson Load (0.8ms)[0m   [0mSELECT * FROM "people" [0m
 Completed in 10ms (View: 5, DB: 0) | 200 OK [http://localhost/people]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:20:23) [GET]
+
+ActionController::RoutingError (No route matches "/main.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:20:23) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/AppKit/AppKit.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-05 18:20:23) [GET]
+
+ActionController::RoutingError (No route matches "/Frameworks/Foundation/Foundation.j" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PeopleController#index (for 127.0.0.1 at 2009-10-05 18:20:24) [GET]
+  [4;36;1mPerson Load (0.7ms)[0m   [0;1mSELECT * FROM "people" [0m
+Completed in 58ms (View: 49, DB: 0) | 200 OK [http://localhost/people]
