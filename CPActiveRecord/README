@@ -1,0 +1,3 @@
+This is the first version of CPActiveRecord, a reimplementation of Rails' ActiveRecord in Cappuccino. It is designed to allow you to interface with your Rails models the same way you do in Rails. CPActiveRecord also tries to keep your models in sync with your Rails models through occasional polling.
+
+Documentation coming soon.
