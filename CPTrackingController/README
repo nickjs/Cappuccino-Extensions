@@ -1,0 +1,24 @@
+CPTrackingController is somewhat similar to UITabBarController. It manages switching between a set of radio views. CPTrackingController (will eventually) offer several tracking modes, such as CPSegmentedControl, CPTabView, or CPRadioGroups.
+
+This class is fairly incomplete. For now, only CPSegmentedControl is supported for tracking. Use with caution.
+
+Usage:
+var controller1 = [[CPViewController alloc] init];
+[controller1 setTitle:@"Collection"];
+[[controller1 radioItem] setImage:...]; // Optional
+[controller1 setView:collectionView];
+
+var controller2 = [[CPViewController alloc] init];
+[controller2 setTitle:@"Table"];
+[controller2 setView:tableView];
+
+var bounds = [[theWindow contentView] bounds],
+    contentView = [[CPView alloc] initWithFrame:CGRectMake(0.0, 0.0, CGRectGetWidth(bounds), CGRectGetHeight(bounds) - 30.0)];
+[[theWindow contentView] addSubview:contentView];
+
+var trackingController = [[CPTrackingController alloc] initWithViewControllers:[controller1, controller2]];
+[contentView addSubview:[trackingController view]];
+
+var control = [trackingController trackingControl];
+[control setFrameOrigin:CGPointMake(25.0, CGRectGetHeight(bounds) - 28.0)];
+[[theWindow contentView] addSubview:control];
