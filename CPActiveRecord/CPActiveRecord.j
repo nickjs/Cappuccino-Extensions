@@ -22,7 +22,7 @@
 
 @import <Foundation/CPObject.j>
 
-@import "CPURLRequest+CPActiveRecordAdditions.j"
+@import "CPURLRequest-CPActiveRecordAdditions.j"
 
 
 CPActiveRecordCollectionWillLoad = @"CPActiveRecordCollectionWillLoad";

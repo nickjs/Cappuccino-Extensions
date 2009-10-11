@@ -1,5 +1,27 @@
 A collection of extensions for the Cappuccino Application Framework.
 
+Installation Instructions
+-------------------------
+
+If you are using Git:
+1) cd root/git/dir
+2) git submodule add git://github.com/nciagra/Cappuccino-Extensions.git root/app/dir/Frameworks/Extensions
+
+If you are NOT using Git:
+1) cd root/app/dir/Frameworks
+2) git clone git://github.com/nciagra/Cappuccino-Extensions.git Extensions
+(or download the archive and put it here manually).
+
+Including Extensions
+--------------------
+
+In main.j:
+@import <Extensions/CPActiveRecord/CPActiveRecord.j>
+
+Repeat for any extension you would like to use.
+(Pay attention to extension requirements! For example, CPNavigationController requires CPViewController and CPPropertyAnimation to be @imported first.)
+
+
 CouchDB
 -------
 Provided by Geoffrey Grosenbach

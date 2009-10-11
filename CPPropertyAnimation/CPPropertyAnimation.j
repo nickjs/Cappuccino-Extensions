@@ -2,7 +2,7 @@
  * CPPropertyAnimation.j
  * AppKit
  *
- * Created by Nicholas Small. (Extended by David Cann).
+ * Created by Nicholas Small.
  * Copyright 2009, Nicholas Small.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,13 +19,15 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
- 
+
+@import <AppKit/CPAnimation.j>
+
+
 /*
   A VERY basic, but functional, property animation for Cappuccino. This is not CoreAnimation,
   nor anything similar. However, it will handle some basic property animations, and
   more can easily be added.
 */
- 
 @implementation CPPropertyAnimation : CPAnimation
 {
 	CPView			view;
