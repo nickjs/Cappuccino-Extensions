@@ -94,11 +94,16 @@ CPTrackingRadioMode = 1;
     if (!aSender)
         return;
     
+    [self selectViewControllerAtIndex:[aSender selectedSegment]];
+}
+
+- (void)selectViewController:(CPViewController)aController
+{
     [_currentViewController viewWillDisappear:NO];
     [[_currentViewController view] removeFromSuperview];
     [_currentViewController viewDidDisappear:NO];
     
-    _currentViewController = _viewControllers[[aSender selectedSegment]];
+    _currentViewController = aController;
     
     var view = [_currentViewController view];
     
@@ -107,9 +112,16 @@ CPTrackingRadioMode = 1;
     [view setFrame:CGRectMakeCopy([_view bounds])];
     [view setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     
-    [_view addSubview:view];
+    if (_view)
+        [_view addSubview:view];
     
     [_currentViewController viewDidAppear:NO];
+}
+
+- (void)selectViewControllerAtIndex:(int)anIndex
+{
+    var controller = [_viewControllers objectAtIndex:anIndex];
+    [self selectViewController:controller];
 }
 
 @end
