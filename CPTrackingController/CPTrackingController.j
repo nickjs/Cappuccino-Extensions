@@ -97,17 +97,18 @@ CPTrackingRadioMode = 1;
     
     _currentViewController = aController;
     
-    var view = [_currentViewController view];
-    
-    [_currentViewController viewWillAppear:NO];
-    
-    [view setFrame:CGRectMakeCopy([_view bounds])];
-    [view setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
-    
-    if (_view)
+    if (_currentViewController)
+    {
+        var view = [_currentViewController view];
+        
+        [_currentViewController viewWillAppear:NO];
+        
+        [view setFrame:CGRectMakeCopy([_view bounds])];
+        [view setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
         [_view addSubview:view];
-    
-    [_currentViewController viewDidAppear:NO];
+        
+        [_currentViewController viewDidAppear:NO];
+    }
 }
 
 - (void)selectViewControllerAtIndex:(int)anIndex
