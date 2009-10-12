@@ -71,7 +71,7 @@ CPTrackingRadioMode = 1;
     [_trackingControl setSegmentCount:count];
     [_trackingControl setTrackingMode:CPSegmentSwitchTrackingSelectOne];
     [_trackingControl setTarget:self];
-    [_trackingControl setAction:@selector(trackingControlDidChange:)];
+    [_trackingControl setAction:@selector(_trackingControlDidChange:)];
     
     for (var i = 0; i < count; i++)
     {
@@ -87,14 +87,6 @@ CPTrackingRadioMode = 1;
     }
     
     return _trackingControl;
-}
-
-- (@action)trackingControlDidChange:(id)aSender
-{
-    if (!aSender)
-        return;
-    
-    [self selectViewControllerAtIndex:[aSender selectedSegment]];
 }
 
 - (void)selectViewController:(CPViewController)aController
@@ -122,6 +114,87 @@ CPTrackingRadioMode = 1;
 {
     var controller = [_viewControllers objectAtIndex:anIndex];
     [self selectViewController:controller];
+}
+
+// Private API
+
+- (CPArray)_radioItems
+{
+    var array = [CPMutableArray array];
+    
+    var count = [_viewControllers count];
+    for (var i = 0; i < count; i++)
+    {
+        var item = [_viewControllers[i] radioItem];
+        [array addObject:item];
+    }
+    
+    return array;
+}
+
+- (@action)_trackingControlDidChange:(id)aSender
+{
+    if (!aSender)
+        return;
+    
+    [self selectViewControllerAtIndex:[aSender selectedSegment]];
+}
+
+- (@action)_selectToolbarItem:(id)aSender
+{
+    if (!aSender)
+        return;
+    
+    [self selectViewControllerAtIndex:[aSender tag]];
+}
+
+@end
+
+@implementation CPTrackingController (CPToolbarDelegate)
+
+- (CPArray)toolbarDefaultItemIdentifiers:(CPToolbar)aToolbar
+{
+    var items = [self _radioItems],
+        count = [items count],
+        array = [CPMutableArray array];
+    
+    for (var i = 0; i < count; i++)
+        [array addObject:[items[i] title]];
+    
+    return array;
+}
+
+- (CPToolbarItem)toolbar:(CPToolbar)aToolbar itemForItemIdentifier:(CPString)anIdentifier willBeInsertedIntoToolbar:(BOOL)aFlag
+{
+    var items = [self _radioItems],
+        count = [items count],
+        item;
+    
+    for (var i = 0; i < count; i++)
+    {
+        item = items[i];
+        
+        if ([item title] === anIdentifier)
+            break;
+        else
+            item = nil;
+    }
+    
+    if (!item)
+        return nil;
+    
+    var toolbarItem = [[CPToolbarItem alloc] initWithItemIdentifier:anIdentifier];
+    
+    [toolbarItem setMinSize:CGSizeMake(32.0, 32.0)];
+    [toolbarItem setMaxSize:CGSizeMake(32.0, 32.0)];
+    [toolbarItem setLabel:[item title]];
+    [toolbarItem setImage:[item image]];
+    [toolbarItem setAlternateImage:[item image]];
+    [toolbarItem setTarget:self];
+    [toolbarItem setAction:@selector(_selectToolbarItem:)];
+    [toolbarItem setTag:[items indexOfObject:item]];
+    
+    return toolbarItem;
 }
 
 @end
