@@ -28,7 +28,7 @@
 @import "CPNavigationBar.j"
 
 
-@implementation CPNavigationController : CPViewController
+@implementation CPNavigationController : UIViewController
 {
     CPMutableArray          _viewControllers;
     CPViewController        _visibleViewController;
@@ -167,7 +167,10 @@
     
     var count = [_viewControllers count];
     for (var i = 0; i < count; i++)
-        [array addObject:[_viewControllers[i] navigationItem]];
+    {
+        var item = [_viewControllers[i] navigationItem];
+        [array addObject:item];
+    }
     
     return array;
 }

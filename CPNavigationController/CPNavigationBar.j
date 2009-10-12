@@ -39,12 +39,12 @@
 
 - (id)init
 {
-    self = [super initWithFrame:CGRectMakeZero()];
+    self = [super init];
     
     if (self)
     {
         [self setAutoresizingMask:CPViewWidthSizable];
-        [self setBackgroundColor:[CPColor colorWithPatternImage:[[CPImage alloc] initWithContentsOfFile:@"Resources/BrowserBar.png" size:CGSizeMake(1.0, 36.0)]]];
+        [self setBackgroundColor:[CPColor colorWithPatternImage:[[CPImage alloc] initWithContentsOfFile:[[CPBundle bundleForClass:[self class]] pathForResource:@"NavigationBar.png"] size:CGSizeMake(1.0, 36.0)]]];
     }
     
     return self;
@@ -383,7 +383,7 @@
             
             var currentColor = [[backButton currentValueForThemeAttribute:@"bezel-color"] patternImage];
             var tpi = [[CPThreePartImage alloc] initWithImageSlices:[
-                [[CPImage alloc] initWithContentsOfFile:@"Resources/button-bezel-left-point.png" size:CGSizeMake(12.0, 24.0)],
+                [[CPImage alloc] initWithContentsOfFile:[[CPBundle bundleForClass:[self class]] pathForResource:@"button-bezel-left-point.png"] size:CGSizeMake(12.0, 24.0)],
                 [currentColor imageSlices][1],
                 [currentColor imageSlices][2]
             ] isVertical:NO];

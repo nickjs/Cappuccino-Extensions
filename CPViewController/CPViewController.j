@@ -44,7 +44,7 @@
     It has methods that are called when a view appears or disappears.
     This class is also a good place for delegate & datasource methods, and other controller stuff.
 */
-@implementation CPViewController : CPResponder
+@implementation UIViewController : CPResponder
 {
     CPView              _view;
     

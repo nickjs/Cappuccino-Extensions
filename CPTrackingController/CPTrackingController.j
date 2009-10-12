@@ -29,7 +29,7 @@
 CPTrackingSegmentedMode = 0;
 CPTrackingRadioMode = 1;
 
-@implementation CPTrackingController : CPViewController
+@implementation CPTrackingController : UIViewController
 {
     CPArray             _viewControllers;
     CPViewController    _currentViewController;
@@ -100,9 +100,10 @@ CPTrackingRadioMode = 1;
     
     _currentViewController = _viewControllers[[aSender selectedSegment]];
     
+    var view = [_currentViewController view];
+    
     [_currentViewController viewWillAppear:NO];
     
-    var view = [_currentViewController view];
     [view setFrame:CGRectMakeCopy([_view bounds])];
     [view setAutoresizingMask:CPViewWidthSizable | CPViewHeightSizable];
     
