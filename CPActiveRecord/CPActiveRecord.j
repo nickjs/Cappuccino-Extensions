@@ -35,6 +35,7 @@ CPActiveRecordRecordWillDestroy = @"CPActiveRecordRecordWillDestroy";
 CPActiveRecordRecordDidDestroy = @"CPActiveRecordRecordDidDestroy";
 
 var CPActiveRecordModels;
+var CPActiveRecordIdentifierKey = @"id";
 
 @implementation CPActiveRecord : CPObject
 {
@@ -46,6 +47,16 @@ var CPActiveRecordModels;
 + (void)initialize
 {
     self._CPActiveRecordLastSync = 0;
+}
+
++ (void)setIdentifierKey:(CPString)aKey
+{
+    CPActiveRecordIdentifierKey = aKey;
+}
+
++ (CPString)identifierKey
+{
+    return CPActiveRecordIdentifierKey;
 }
 
 + (CPDictionary)_recordsForClass:(Class)aModel
@@ -92,11 +103,11 @@ var CPActiveRecordModels;
     if (!attributes)
         attributes = {};
     
-    var record = [CPActiveRecord _recordForClass:self identifier:attributes.id];
+    var record = [CPActiveRecord _recordForClass:self identifier:attributes[CPActiveRecordIdentifierKey]];
     
     for (var attribute in attributes)
     {
-        if (attribute == 'id')
+        if (attribute == CPActiveRecordIdentifierKey)
             continue;
         
         try
@@ -134,18 +145,6 @@ var CPActiveRecordModels;
     
     if (identifier)
         [records setObject:self forKey:identifier];
-}
-
-- (JSObject)attributes:(JSObject)attr
-{
-    var ret = {};
-    
-    if ([self identifier])
-        ret['id'] = [self identifier];
-    
-    ret[[[self className] lowercaseString]] = attr;
-    
-    return ret;
 }
 
 @end
@@ -243,7 +242,12 @@ var CPActiveRecordModels;
         case CPString:
                         var record = [records objectForKey:ids];
                         if (!record)
-                            [self new:{'id':ids}];
+                        {
+                            var obj = {};
+                            obj[CPActiveRecordIdentifierKey] = ids;
+                            
+                            record = [self new:obj];
+                        }
                         
                         return record;
         case CPArray:
