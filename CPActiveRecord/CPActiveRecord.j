@@ -110,14 +110,19 @@ var CPActiveRecordIdentifierKey = @"id";
         if (attribute == CPActiveRecordIdentifierKey)
             continue;
         
+        var components = [attribute componentsSeparatedByString:@"_"];
+        for (var i = 1, count = [components count]; i < count; i++)
+            components[i] = [components[i] capitalizedString];
+        var camelCased = [components componentsJoinedByString:@""];
+        
         try
         {
-            [record setValue:attributes[attribute] forKey:attribute];
+            [record setValue:attributes[attribute] forKey:camelCased];
         }
         catch (anException)
         {
             if ([anException name] === CPUndefinedKeyException)
-                CPLog.info(@"Could not connect the remote property " + attribute + @" of record of model " + [record className]);
+                CPLog.info(@"Could not connect the remote property " + camelCased + @" of record of model " + [record className]);
             else
                 throw anException;
         }
@@ -490,8 +495,31 @@ var CPActiveRecordIdentifierKey = @"id";
     {
         for (var key in data)
         {
-            var model = objj_getClass([key capitalizedString]);
-            [model new:data[key]];
+            // For use with Google App Engine datastore
+            if (key == 'list')
+            {
+                for (model in data[key])
+                {
+                    if (model == @"@offset")
+                        continue;
+                    
+                    var modelClass = objj_getClass(model),
+                        modelData = data[key][model];
+                    
+                    if (modelData.isa && [modelData class] === CPArray)
+                    {
+                        for (var i = 0, count = [modelData count]; i < count; i++)
+                            [modelClass new:modelData[i]];
+                    }
+                    else
+                        [modelClass new:modelData];
+                }
+            }
+            else
+            {
+                var model = objj_getClass([key capitalizedString]);
+                [model new:data[key]];
+            }
         }
     }
 }
