@@ -126,9 +126,15 @@ var CPActiveRecordIdentifierKey = @"id";
     return record;
 }
 
-+ (CPURL)resourcePath
++ (CPURL)resourcesPath
 {
     return [CPURL URLWithString:@"/" + [[self className] lowercaseString] + @"s"];
+}
+
+- (CPURL)resourcePath
+{
+    var urlString = [[[self class] resourcesPath] absoluteString];
+    return [CPURL URLWithString:urlString + @"/" + [self identifier]];
 }
 
 - (void)setIdentifier:(CPString)anIdentifier
@@ -494,9 +500,13 @@ var CPActiveRecordIdentifierKey = @"id";
 
 + (CPURLRequest)collectionWillLoad
 {
+    var path = [self resourcesPath];
+    if (!path)
+        return nil;
+    
     [[CPNotificationCenter defaultCenter] postNotificationName:CPActiveRecordCollectionWillLoad object:self];
     
-    return [CPURLRequest requestJSONWithURL:[self resourcePath]];
+    return [CPURLRequest requestJSONWithURL:path];
 }
 
 + (void)collectionDidLoad
@@ -506,12 +516,13 @@ var CPActiveRecordIdentifierKey = @"id";
 
 - (CPURLRequest)recordWillLoad
 {
+    var path = [self resourcePath];
+    if (!path)
+        return nil;
+    
     [[CPNotificationCenter defaultCenter] postNotificationName:CPActiveRecordRecordWillLoad object:self];
     
-    var path = [CPURL URLWithString:[[[self class] resourcePath] absoluteString] + @"/" + identifier],
-        request = [CPURLRequest requestJSONWithURL:path];
-    
-    return request;
+    return [CPURLRequest requestJSONWithURL:path];
 }
 
 - (void)recordDidLoad
@@ -521,9 +532,13 @@ var CPActiveRecordIdentifierKey = @"id";
 
 - (CPURLRequest)recordWillSave
 {
+    var path = [self resourcePath];
+    if (!path)
+        return nil;
+    
     [[CPNotificationCenter defaultCenter] postNotificationName:CPActiveRecordRecordWillSave object:self];
     
-    var request = [CPURLRequest requestJSONWithURL:[[self class] resourcePath] + (identifier ? @"/" + [self identifier] : @"")];
+    var request = [CPURLRequest requestJSONWithURL:path];
     
     [request setHTTPMethod:identifier ? @"PUT" : @"POST"];
     [request setHTTPBody:[CPURLRequest stringifyJSON:[self attributes]]];
@@ -543,9 +558,13 @@ var CPActiveRecordIdentifierKey = @"id";
     if (!identifier)
         return;
     
+    var path = [self resourcePath];
+    if (!path)
+        return nil;
+    
     [[CPNotificationCenter defaultCenter] postNotificationName:CPActiveRecordRecordWillDestroy object:self];
     
-    var request = [CPURLRequest requestJSONWithURL:[[self class] resourcePath] + @"/" + identifier];
+    var request = [CPURLRequest requestJSONWithURL:path];
     [request setHTTPMethod:@"DELETE"];
     
     return request;
