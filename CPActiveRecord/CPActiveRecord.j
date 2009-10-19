@@ -487,17 +487,17 @@ var CPActiveRecordIdentifierKey = @"id";
     return NO;
 }
 
-+ (void)raiseValidationError:(JSObject)errorObj
+- (void)raiseValidationError:(JSObject)errorObj
 {
-    CPLog.info(@"Server refused record.");
+    CPLog.info(@"Server refused record: " + errorObj);
 }
 
 + (void)connection:(CPURLConnection)aConnection didReceiveResponse:(CPURLResponse)aResponse
 {
     var code = [aResponse statusCode];
     
-    if (code == 422)
-        _invalidated = YES;
+    if (code == 422 && aConnection.postTarget)
+        aConnection.postTarget._invalidated = YES;
 }
 
 + (void)connection:(CPURLConnection)aConnection didReceiveData:(CPString)aResponse
@@ -512,10 +512,10 @@ var CPActiveRecordIdentifierKey = @"id";
         return;
     }
     
-    if (_invalidated)
+    if (aConnection.postTarget && aConnection.postTarget._invalidated)
     {
-        _invalidated = NO;
-        return [self raiseValidationError:data];
+        aConnection.postTarget._invalidated = NO;
+        return [aConnection.postTarget raiseValidationError:data];
     }
     
     [CPActiveRecord parseData:data];
