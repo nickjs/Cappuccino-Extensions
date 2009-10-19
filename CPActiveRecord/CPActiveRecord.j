@@ -42,6 +42,7 @@ var CPActiveRecordIdentifierKey = @"id";
     CPString        identifier      @accessors;
     
     JSObject        _lastSync;
+    BOOL            _invalidated;
 }
 
 + (void)initialize
@@ -486,6 +487,19 @@ var CPActiveRecordIdentifierKey = @"id";
     return NO;
 }
 
++ (void)raiseValidationError:(JSObject)errorObj
+{
+    CPLog.info(@"Server refused record.");
+}
+
++ (void)connection:(CPURLConnection)aConnection didReceiveResponse:(CPURLResponse)aResponse
+{
+    var code = [aResponse statusCode];
+    
+    if (code == 422)
+        _invalidated = YES;
+}
+
 + (void)connection:(CPURLConnection)aConnection didReceiveData:(CPString)aResponse
 {
     try
@@ -496,6 +510,12 @@ var CPActiveRecordIdentifierKey = @"id";
     {
         CPLog.info(@"Could not load resource");
         return;
+    }
+    
+    if (_invalidated)
+    {
+        _invalidated = NO;
+        return [self raiseValidationError:data];
     }
     
     [CPActiveRecord parseData:data];
