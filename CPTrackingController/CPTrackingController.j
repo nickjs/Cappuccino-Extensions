@@ -86,6 +86,9 @@ CPTrackingRadioMode = 1;
             [_trackingControl setLabel:[[radioItem title] characterAtIndex:0] forSegment:i];
     }
     
+    if (_currentViewController)
+        [_trackingControl setSelectedSegment:[_viewControllers indexOfObject:_currentViewController]];
+    
     return _trackingControl;
 }
 
@@ -109,12 +112,19 @@ CPTrackingRadioMode = 1;
         
         [_currentViewController viewDidAppear:NO];
     }
+    
+    [_trackingControl setSelectedSegment:_currentViewController ? [_viewControllers indexOfObject:_currentViewController] : nil];
 }
 
 - (void)selectViewControllerAtIndex:(int)anIndex
 {
     var controller = [_viewControllers objectAtIndex:anIndex];
     [self selectViewController:controller];
+}
+
+- (CPViewController)selectedViewController
+{
+    return _currentViewController;
 }
 
 // Private API
