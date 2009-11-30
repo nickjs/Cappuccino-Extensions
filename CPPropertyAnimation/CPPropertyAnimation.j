@@ -43,8 +43,6 @@
 	
 	if (self)
 	{
-		[self setDelegate:self];
-		
 		view = aView;
 		properties = [CPDictionary dictionary];
 	}
@@ -147,9 +145,11 @@
 	[super startAnimation];
 }
 
-- (void)animationDidEnd:(CPAnimation)anAnimation
+- (void)animationTimerDidFire:(CPTimer)aTimer
 {
-	if (_endView)
+    [super animationTimerDidFire:aTimer];
+    
+	if (_progress === 1.0 && _endView)
 		[view removeFromSuperview];
 }
 
