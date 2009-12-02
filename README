@@ -27,3 +27,10 @@ CouchDB
 Provided by Geoffrey Grosenbach
 http://peepcode.com
 http://github.com/topfunky/cappuccino-couchdb
+
+CappuGeo
+--------
+IP Geolocation services provided by:
+http://maxmind.com
+JSONP Geocoding services provided by:
+http://tinygeocoder.com
