@@ -70,8 +70,11 @@ LocationDidGeocode = @"LocationDidGeocode";
         _geocodeConnection = nil;
     }
     
-    var addressArray = [street, area, city, region, country, postal],
-        query = encodeURIComponent([addressArray componentsJoinedByString:@","]),
+    var addressArray = [street || @"", area || @"", city || @"", region || @"", country || @"", postal || @""];
+    
+    [addressArray removeObject:@""];
+    
+    var query = encodeURIComponent([addressArray componentsJoinedByString:@","]),
         request = [CPURLRequest requestWithURL:@"http://tinygeocoder.com/create-api.php?q=" + query];
     
     _geocodeConnection = [CPJSONPConnection connectionWithRequest:request callback:@"callback" delegate:self];
@@ -93,6 +96,14 @@ LocationDidGeocode = @"LocationDidGeocode";
         request = [CPURLRequest requestWithURL:@"http://tinygeocoder.com/create-api.php?g=" + query];
     
     _reverseGeocodeConnection = [CPJSONPConnection connectionWithRequest:request callback:@"callback" delegate:self];
+}
+
+- (CPString)description
+{
+    var array = [street || @"", area || @"", city || @"", region || @"", country || @"", postal || @""];
+    [array removeObject:@""];
+    
+    return [array componentsJoinedByString:@", "];
 }
 
 - (CPString)displayArea
