@@ -1,0 +1,23 @@
+CappuGeo is a very simple framework to assist with client-side geolocation and geocoding in Cappuccino.
+
+Geolocation:
+If HTML5 geolocation is available, it will be used. Otherwise it will fallback to Maxmind's geoip.
+[[CPLocationController sharedController] locate];
+
+After the result is returned, a CurrentLocationDidChange notification will be posted and -probe will be called on
+the CPLocation object which will cause it to be [reverse]geocoded if necessary.
+
+If geoip was used as the sensor method, the area that it returns will be geocoded to try and find a more accurate lat/lon.
+If GPS was used as the sensor method, the lat/lon will be reverse geocoded to find an area out of necessity.
+
+Geocoding:
+You can call -geocode or -reverseGeocode on a CPLocation object to perform the appropriate method using http://tinygeocoder.com. This is
+a JSONP geocoder so you don't need to worry about anything like API keys or limits.
+
+When the call completes, the CPLocation instance will post a LocationDidGeocode notification.
+
+Note: CPLocationController automatically observes this notification for its currentLocation property. Thus, if a CPLocation
+instance is the currentLocation, it will cause CurrentLocationDidChange notification to be posted. This may result in a rapid
+double firing of this notification, depending on your use case. This is by design.
+
+Warning: Currently tinygeocoder returns inconsistent results upon reverse geocoding. We need to find a way to handle this. Or write to the author.
