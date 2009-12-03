@@ -211,22 +211,26 @@ var CPActiveRecordIdentifierKey = @"id";
         for (var i = 0; i < count; i++)
         {
             var record = records[i],
-                matched = NO;
+                matched = YES;
             
             for (conditionName in options.conditions)
             {
                 var conditionValue = options.conditions[conditionName];
                 if (conditionValue.isa && [conditionValue class] === CPArray)
                 {
-                    if (![conditionValue containsObject:[record valueForKey:conditionName]])
+                    if (![conditionValue containsObject:[record valueForKey:conditionName]]) {
+                        matched = NO;
                         break;
+                    }
                 }
-                else if ([record valueForKey:conditionName] != conditionValue)
+                else if ([record valueForKey:conditionName] != conditionValue) {
+                    matched = NO;
                     break;
-                
-                [matches addObject:record];
-                matched = YES;
+                }
             }
+            
+            if (matched)
+                [matches addObject:record];
             
             if (matched && options.first)
                 break;
