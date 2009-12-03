@@ -106,7 +106,7 @@ LocationDidGeocode = @"LocationDidGeocode";
     return [array componentsJoinedByString:@", "];
 }
 
-- (CPString)displayArea
+- (CPString)areaDescription
 {
     return city + @", " + region;
 }
