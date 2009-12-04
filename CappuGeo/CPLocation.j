@@ -45,6 +45,21 @@ LocationDidGeocode = @"LocationDidGeocode";
     CPJSONPConnection   _reverseGeocodeConnection;
 }
 
+- (id)initWithString:(CPString)aString
+{
+    self = [self init];
+    
+    if (self)
+    {
+        var query = encodeURIComponent(aString),
+            request = [CPURLRequest requestWithURL:@"http://tinygeocoder.com/create-api.php?q=" + query];
+
+        _geocodeConnection = [CPJSONPConnection connectionWithRequest:request callback:@"callback" delegate:self];
+    }
+    
+    return self;
+}
+
 - (void)probe
 {
     if (lat && lon)
