@@ -155,7 +155,7 @@ var CPActiveRecordIdentifierKey = @"id";
 - (CPURL)resourcePath
 {
     var urlString = [[[self class] resourcesPath] absoluteString];
-    return [CPURL URLWithString:urlString + @"/" + [self identifier]];
+    return [CPURL URLWithString:urlString + @"/" + ([self identifier] || @"")];
 }
 
 - (void)setIdentifier:(CPString)anIdentifier
