@@ -120,6 +120,15 @@
 		}
 		else if (keyPath == 'alphaValue')
 			value = (progress * (end - start)) + start;
+		else if (keyPath == 'backgroundColor' || keyPath == 'textColor' || keyPath == 'textShadowColor')
+		{
+		    var red = (progress * ([end redComponent] - [start redComponent])) + [start redComponent],
+		        green = (progress * ([end greenComponent] - [start greenComponent])) + [start greenComponent],
+		        blue = (progress * ([end blueComponent] - [start blueComponent])) + [start blueComponent],
+		        alpha = (progress * ([end alphaComponent] - [start alphaComponent])) + [start alphaComponent];
+		    
+		    value = [CPColor colorWithCalibratedRed:red green:green blue:blue alpha:alpha];
+		}
 		
 		[view setValue:value forKey:keyPath];
 	}
