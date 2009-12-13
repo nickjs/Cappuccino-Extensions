@@ -137,7 +137,8 @@
 
 - (CPNavigationItem)backItem
 {
-    return [_items objectAtIndex:[_items count] - 2];
+    if ([_items count] > 1)
+        return [_items objectAtIndex:[_items count] - 2];
 }
 
 - (void)setDelegate:(id)aDelegate
