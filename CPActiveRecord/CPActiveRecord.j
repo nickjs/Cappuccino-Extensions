@@ -106,6 +106,9 @@ var CPActiveRecordIdentifierKey = @"id";
     
     var record = [CPActiveRecord _recordForClass:self identifier:attributes[CPActiveRecordIdentifierKey]];
     
+    if ([record respondsToSelector:@selector(willAwakeFromObject:)])
+        [record willAwakeFromObject:attributes];
+    
     for (var attribute in attributes)
     {
         if (attribute == CPActiveRecordIdentifierKey)
@@ -143,6 +146,9 @@ var CPActiveRecordIdentifierKey = @"id";
                 throw anException;
         }
     }
+    
+    if ([record respondsToSelector:@selector(awakeFromObject:)])
+        [record awakeFromObject:attributes];
     
     return record;
 }
@@ -498,6 +504,9 @@ var CPActiveRecordIdentifierKey = @"id";
 
 + (void)connection:(CPURLConnection)aConnection didReceiveResponse:(CPURLResponse)aResponse
 {
+    if (![aResponse respondsToSelector:@selector(statusCode)])
+        return;
+    
     var code = [aResponse statusCode];
     
     if (code == 422 && aConnection.postTarget)
@@ -522,7 +531,8 @@ var CPActiveRecordIdentifierKey = @"id";
         return [aConnection.postTarget raiseValidationError:data];
     }
     
-    [CPActiveRecord parseData:data];
+    if (!data.error)
+        [CPActiveRecord parseData:data];
 
     if (aConnection.postTarget && aConnection.postAction && [aConnection.postTarget respondsToSelector:aConnection.postAction])
         objj_msgSend(aConnection.postTarget, aConnection.postAction);
