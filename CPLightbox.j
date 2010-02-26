@@ -104,7 +104,7 @@ var SharedLightbox;
 {
     _backgroundColor = aColor;
     
-    [_lightboxWindow setBackgroundColor:_backgroundColor];
+    [_backgroundWindow setBackgroundColor:_backgroundColor];
 }
 
 - (void)_show
