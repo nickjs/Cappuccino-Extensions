@@ -296,7 +296,7 @@
     
     if (_leftView)
     {
-        [_leftView setFrameOrigin:CGPointMake(6.0, 6.0)];
+        [_leftView setFrameOrigin:CGPointMake(6.0, CGRectGetMinY([_leftView frame]) || 6.0)];
         
         if (animated)
         {
@@ -331,7 +331,7 @@
     
     if (_rightView)
     {
-        [_rightView setFrameOrigin:CGPointMake(CGRectGetWidth([self bounds]) - CGRectGetWidth([_rightView bounds]) - 6.0, 6.0)];
+        [_rightView setFrameOrigin:CGPointMake(CGRectGetWidth([self bounds]) - CGRectGetWidth([_rightView bounds]) - 6.0, CGRectGetMinY([_rightView frame]) || 6.0)];
         [_rightView setAutoresizingMask:CPViewMinXMargin];
         
         if (animated)
