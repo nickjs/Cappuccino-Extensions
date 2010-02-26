@@ -94,6 +94,11 @@ var CPActiveRecordIdentifierKey = @"id";
     return record;
 }
 
++ (void)clearCache
+{
+    [[CPActiveRecord _recordsForClass:self] removeAllObjects];
+}
+
 + (id)new
 {
     return [self new:nil];
