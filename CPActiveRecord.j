@@ -366,18 +366,64 @@ var CPActiveRecordIdentifierKey = @"id";
 
 + (void)addObserver:(id)anObserver selector:(SEL)aSelector
 {
+    CPLog.warn(@"CPActiveRecord +addObserver:selector: is deprecated. Use +addObserver: instead.");
+    
     [[CPNotificationCenter defaultCenter] addObserver:anObserver selector:aSelector name:CPActiveRecordCollectionDidLoad object:self];
     
     if (![self loadIfNeeded])
         objj_msgSend(anObserver, aSelector, [CPNotification notificationWithName:CPActiveRecordCollectionDidLoad object:self]);
 }
 
++ (void)addObserver:(id)anObserver
+{
+    var center = [CPNotificationCenter defaultCenter];
+    
+    if ([anObserver respondsToSelector:@selector(collectionWillLoad:)])
+        [center addObserver:anObserver selector:@selector(collectionWillLoad:) name:CPActiveRecordCollectionWillLoad object:self];
+    
+    if ([anObserver respondsToSelector:@selector(collectionDidLoad:)])
+        [center addObserver:anObserver selector:@selector(collectionDidLoad:) name:CPActiveRecordCollectionDidLoad object:self];
+    
+    if (![self loadIfNeeded])
+        [anObserver performSelector:@selector(collectionDidLoad:) withObject:[CPNotification notificationWithName:CPActiveRecordCollectionDidLoad object:self]];
+}
+
++ (void)removeObserver:(id)anObserver
+{
+    var center = [CPNotification defaultCenter];
+    [center removeObserver:anObserver name:CPActiveRecordCollectionWillLoad object:self];
+    [center removeObserver:anObserver name:CPActiveRecordCollectionDidLoad object:self];
+}
+
 - (void)addObserver:(id)anObserver selector:(SEL)aSelector
 {
+    CPLog.warn(@"CPActiveRecord -addObserver:selector: is deprecated. Use -addObserver: instead.");
+    
     [[CPNotificationCenter defaultCenter] addObserver:anObserver selector:aSelector name:CPActiveRecordRecordDidLoad object:self];
     
     if (![self loadIfNeeded])
         objj_msgSend(anObserver, aSelector, [CPNotification notificationWithName:CPActiveRecordRecordDidLoad object:self]);
+}
+
+- (void)addObserver:(id)anObserver
+{
+    var center = [CPNotificationCenter defaultCenter];
+    
+    if ([anObserver respondsToSelector:@selector(recordWillLoad:)])
+        [center addObserver:anObserver selector:@selector(recordWillLoad:) name:CPActiveRecordRecordWillLoad object:self];
+    
+    if ([anObserver respondsToSelector:@selector(recordDidLoad:)])
+        [center addObserver:anObserver selector:@selector(recordDidLoad:) name:CPActiveRecordRecordDidLoad object:self];
+    
+    if (![self loadIfNeeded])
+        [anObserver performSelector:@selector(recordDidLoad:) withObject:[CPNotification notificationWithName:CPActiveRecordRecordDidLoad object:self]];
+}
+
+- (void)removeObserver:(id)anObserver
+{
+    var center = [CPNotification defaultCenter];
+    [center removeObserver:anObserver name:CPActiveRecordRecordWillLoad object:self];
+    [center removeObserver:anObserver name:CPActiveRecordRecordDidLoad object:self];
 }
 
 + (void)setAutoRefresh:(BOOL)shouldRefresh
