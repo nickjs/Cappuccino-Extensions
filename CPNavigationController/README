@@ -1,9 +1,0 @@
-This is a port of UINavigationController to Cappuccino. Usage is almost identical to UIViewController.
-
-Requirements:
-CPViewController
-CPPropertyAnimation
-Provided Resources
-
-Usage:
-Please refer to Apple's documentation for UINavigationController. The main difference is that a CPViewController does not have to represent a screenful of content. Calling [navigationController view] will return a CPView that you can do anything you like with.
