@@ -384,7 +384,7 @@
             
             var currentColor = [[backButton currentValueForThemeAttribute:@"bezel-color"] patternImage];
             var tpi = [[CPThreePartImage alloc] initWithImageSlices:[
-                [[CPImage alloc] initWithContentsOfFile:[[CPBundle bundleForClass:[self class]] pathForResource:@"button-bezel-left-point.png"] size:CGSizeMake(12.0, 24.0)],
+                [[CPImage alloc] initWithContentsOfFile:[[CPBundle bundleForClass:[self class]] pathForResource:@"ButtonBezelLeft.png"] size:CGSizeMake(12.0, 24.0)],
                 [currentColor imageSlices][1],
                 [currentColor imageSlices][2]
             ] isVertical:NO];
