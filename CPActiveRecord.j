@@ -583,10 +583,10 @@ var CPActiveRecordIdentifierKey = @"id";
     }
     
     if (!data.error)
-        [CPActiveRecord parseData:data];
+        [self parseData:data];
 
     if (aConnection.postTarget && aConnection.postAction && [aConnection.postTarget respondsToSelector:aConnection.postAction])
-        objj_msgSend(aConnection.postTarget, aConnection.postAction);
+        [aConnection.postTarget performSelector:aConnection.postAction];
 }
 
 + (void)parseData:(CPString)data
