@@ -12,14 +12,15 @@ If you are NOT using Git:
 2) git clone git://github.com/nciagra/Cappuccino-Extensions.git Extensions
 (or download the archive and put it here manually).
 
+Either way:
+3) cd root/app/dir/Frameworks/Debug
+4) ln -s ../Extensions
+
 Including Extensions
 --------------------
 
 In main.j:
-@import <Extensions/CPActiveRecord/CPActiveRecord.j>
-
-Repeat for any extension you would like to use.
-(Pay attention to extension requirements! For example, CPNavigationController requires CPViewController and CPPropertyAnimation to be @imported first.)
+@import <Extensions/Extensions.j>
 
 
 CouchDB
@@ -27,10 +28,3 @@ CouchDB
 Provided by Geoffrey Grosenbach
 http://peepcode.com
 http://github.com/topfunky/cappuccino-couchdb
-
-CappuGeo
---------
-IP Geolocation services provided by:
-http://maxmind.com
-JSONP Geocoding services provided by:
-http://tinygeocoder.com
