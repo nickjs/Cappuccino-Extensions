@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CPBundleIdentifier</key>
-	<string>com.280n.extensions.CPActiveRecord</string>
+	<string>com.280n.CappuccinoExtensions</string>
 	<key>CPBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CPBundleName</key>
-	<string>CPActiveRecord</string>
+	<string>CappuccinoExtensions</string>
 	<key>CPBundlePackageType</key>
 	<string>FMWK</string>
 </dict>
