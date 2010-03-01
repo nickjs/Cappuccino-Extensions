@@ -66,7 +66,7 @@ CPTrackingRadioMode = 1;
     if (!count)
         return nil;
     
-    _trackingControl = [[CPSegmentedControl alloc] initWithFrame:CGRectMake(0.0, 0.0, 96.0, 24.0)];
+    _trackingControl = [[CPSegmentedControl alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 24.0)];
     [_trackingControl setSegmentCount:count];
     [_trackingControl setTrackingMode:CPSegmentSwitchTrackingSelectOne];
     [_trackingControl setTarget:self];
