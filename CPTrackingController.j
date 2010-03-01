@@ -126,6 +126,11 @@ CPTrackingRadioMode = 1;
     return _currentViewController;
 }
 
+- (CPViewController)visibleViewController
+{
+    return _currentViewController;
+}
+
 // Private API
 
 - (CPArray)_radioItems
