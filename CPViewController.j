@@ -233,6 +233,34 @@
     return _parentViewController;
 }
 
+/*!
+    Returns the closest parent navigation controller of the current view controller or nil.
+*/
+- (CPNavigationController)navigationController
+{
+    if (!_parentViewController)
+        return nil;
+    
+    if ([_parentViewController isKindOfClass:CPNavigationController])
+        return _parentViewController;
+    
+    return [_parentViewController navigationController];
+}
+
+/*!
+    Returns the closest parent tracking controller of the current view controller or nil.
+*/
+- (CPTrackingController)trackingController
+{
+    if (!_parentViewController)
+        return nil;
+    
+    if ([_parentViewController isKindOfClass:CPTrackingController])
+        return _parentViewController;
+    
+    return [_parentViewController navigationController];
+}
+
 // View Appearance Hooks
 
 /*!
