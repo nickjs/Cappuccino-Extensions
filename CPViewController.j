@@ -411,3 +411,12 @@
 }
 
 @end
+
+@implementation CPView (CPViewController)
+
+- (UIViewController)viewController
+{
+    return self._viewController;
+}
+
+@end
