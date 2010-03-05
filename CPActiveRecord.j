@@ -390,7 +390,7 @@ var CPActiveRecordIdentifierKey = @"id";
 
 + (void)removeObserver:(id)anObserver
 {
-    var center = [CPNotification defaultCenter];
+    var center = [CPNotificationCenter defaultCenter];
     [center removeObserver:anObserver name:CPActiveRecordCollectionWillLoad object:self];
     [center removeObserver:anObserver name:CPActiveRecordCollectionDidLoad object:self];
 }
@@ -421,7 +421,7 @@ var CPActiveRecordIdentifierKey = @"id";
 
 - (void)removeObserver:(id)anObserver
 {
-    var center = [CPNotification defaultCenter];
+    var center = [CPNotificationCenter defaultCenter];
     [center removeObserver:anObserver name:CPActiveRecordRecordWillLoad object:self];
     [center removeObserver:anObserver name:CPActiveRecordRecordDidLoad object:self];
 }
